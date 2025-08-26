@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Chosen Palette: Minimalist Blue (Slate, Sky, Neutral Gray) -->
-    <!-- Application Structure Plan: The SPA is now structured directly around the user's 4 Project Criteria (Concept, Experiments, 3D Modeling, Visualization). A "Project Journey" section explicitly lays out these four steps, with the detailed student assignments integrated within them. This directly mirrors the user's provided syllabus slide and text, making the structure more intuitive. The detailed weekly schedule remains in an accordion. This structure was chosen to directly align the interactive experience with the pedagogical framework provided by the user. -->
+    <!-- Application Structure Plan: The SPA is now structured directly around the user's 4 Project Criteria (Experiments, Concept & Taxonomy, 3D Modeling, Visualization). A "Project Journey" section explicitly lays out these four steps, with the detailed student assignments integrated within them. This directly mirrors the user's provided syllabus slide and text, making the structure more intuitive. The detailed weekly schedule remains in an accordion. This structure was chosen to directly align the interactive experience with the pedagogical framework provided by the user. -->
     <!-- Visualization & Content Choices: Content is organized into sections matching the 4-step project criteria. Goal: Organize/Inform -> Method: JS-powered accordions for the detailed weekly schedule; distinct content cards for each of the 4 project steps. -> Interaction: Click to expand/collapse details. -> Justification: This organizes the information logically according to the user's own framework, improving clarity and reinforcing the course structure. No charts are needed. Icons are used to visually differentiate assignment groups. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
@@ -71,6 +71,7 @@
                 <nav class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="#overview" class="text-slate-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium">Overview</a>
+                        <a href="#links" class="text-slate-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium">Quick Links</a>
                         <a href="#journey" class="text-slate-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium">Your Project</a>
                         <a href="#schedule" class="text-slate-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium">Schedule</a>
                     </div>
@@ -98,7 +99,42 @@
             </div>
         </section>
 
-        <!-- Section 2: Project Journey -->
+        <!-- Section 2: Quick Links -->
+        <section id="links" class="mb-16">
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4 border-b pb-2 border-slate-200">Quick Links</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="https://the-bac.zoom.us/j/2720645727?pwd=NlVrZzJmZjFPMmhkNTRPelhsWWlsdz09" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center space-x-4">
+                    <span class="text-2xl">💻</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">Zoom Meeting</p>
+                        <p class="text-sm text-slate-500">Join our weekly class session here.</p>
+                    </div>
+                </a>
+                <a href="https://discord.gg/B8Za9u4n" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center space-x-4">
+                    <span class="text-2xl">💬</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">Discord Server</p>
+                        <p class="text-sm text-slate-500">Our main hub for communication and questions.</p>
+                    </div>
+                </a>
+                <a href="https://barch-my.sharepoint.com/:f:/g/personal/hamze_machmouchi_the-bac_edu/EhN3Ec4aG-JFppuqz20Gbh4Begukuw1pA0cGPeHpLQxQdg?e=0F0cZu" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center space-x-4">
+                     <span class="text-2xl">📁</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">Class Folder</p>
+                        <p class="text-sm text-slate-500">Access readings, resources, and project files.</p>
+                    </div>
+                </a>
+                <a href="https://barch-my.sharepoint.com/:f:/g/personal/hamze_machmouchi_the-bac_edu/Ek1l0JekI7dMkEYUdEo3apkB1dz140W3JpXJPm3RWueyvw?e=0gdxrX" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center space-x-4">
+                     <span class="text-2xl">📚</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">Software Tutorials</p>
+                        <p class="text-sm text-slate-500">Guides and tutorials for Rhino, Maya, and more.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Section 3: Project Journey -->
         <section id="journey" class="mb-16">
             <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4 border-b pb-2 border-slate-200">Your Project: A Four-Step Guide</h2>
             <p class="text-slate-500 mb-8">The semester is built around a single, evolving project divided into four distinct phases, from initial concept to final visualization.</p>
@@ -159,7 +195,7 @@
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-sky-500">
                     <h3 class="text-2xl font-bold text-slate-800 mb-3">3. 3D Modeling</h3>
-                    <p class="text-slate-600 mb-4">Create detailed 3D models in **Rhino 8** and **Autodesk Maya**, translating physical discoveries into a precise digital system. Evolve the model by applying an assigned **Exploration Type**.</p>
+                    <p class="text-slate-600 mb-4">Create detailed 3D models in <strong>Rhino 8</strong> and <strong>Autodesk Maya</strong>, translating physical discoveries into a precise digital system. Evolve the model by applying an assigned <strong>Exploration Type</strong>.</p>
                      <details class="text-sm">
                         <summary class="font-medium text-sky-600 cursor-pointer">View Exploration Types</summary>
                         <ul class="list-disc list-inside space-y-1 mt-2 text-slate-500">
@@ -169,12 +205,12 @@
                 </div>
                 <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-sky-500">
                     <h3 class="text-2xl font-bold text-slate-800 mb-3">4. Visualization & Presentation</h3>
-                    <p class="text-slate-600">Document your entire design process and present high-quality visualizations. This includes rendered images from tools like **D5, Twinmotion, Rhino Render, or Midjourney**, diagrams illustrating geometric properties, and a discussion of architectural implications.</p>
+                    <p class="text-slate-600">Document your entire design process and present high-quality visualizations. This includes rendered images from tools like <strong>D5, Twinmotion, Rhino Render, or Midjourney</strong>, diagrams illustrating geometric properties, and a discussion of architectural implications.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Section 3: Detailed Schedule -->
+        <!-- Section 4: Detailed Schedule -->
         <section id="schedule" class="mb-12">
             <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4 border-b pb-2 border-slate-200">Detailed Weekly Schedule</h2>
             <div class="space-y-4" id="schedule-accordion">
@@ -188,8 +224,8 @@
                         <p><strong>Week 2 (Sep 3): Physical Experiments Workshop.</strong> A hands-on session for groups to begin physical form-finding experiments related to the core techniques.</p>
                         <p><strong>Week 3 (Sep 10): Concept & Taxonomy.</strong> Students present initial research on their concept's history and geometric principles.</p>
                         <p><strong>Week 4 (Sep 17): Digital Translation & Good Topology.</strong> A workshop on translating physical forms to digital, with a key session on what makes a "good" and "clean" mesh topology for modeling.</p>
-                        <p><strong>Week 5 (Sep 24): Digital Modeling Desk Crits.</strong> Review of initial digital models and the translation of rules from physical experiments.</p>
-                        <p><strong>Week 6 (Oct 1): Parametric Systems Workshop.</strong> Introduction to parametric design to encode the discovered rules for systematic evolution.</p>
+                        <p><strong>Week 5 (Sep 24): Surface Analysis & Rationalization.</strong> A lecture on understanding surface quality through synclastic (positive) and anticlastic (negative) curvature. We'll use Rhino's Curvature Graph tool for analysis and discuss the concept of rationalization for fabrication.</p>
+                        <p><strong>Week 6 (Oct 1): Parametric Systems & Desk Crits.</strong> Introduction to parametric design to encode the discovered rules for systematic evolution. We will also have desk crits to review progress on digital models.</p>
                         <p><strong>Week 7 (Oct 8): Parametric Development.</strong> In-class studio session to develop parametric "design rules" with instructor support.</p>
                         <p><strong>Week 8 (Oct 15): Midterm Presentation Dry Run.</strong> Review of the complete journey from concept and physical experiments to the current digital system.</p>
                         <p class="font-semibold text-sky-600"><strong>Week 9 (Oct 22): MIDTERM PRESENTATIONS.</strong> Students present their full process: Concept, Experiments, and the resulting digital 3D Models.</p>
@@ -203,9 +239,9 @@
                     <div class="accordion-content p-5 border-t border-slate-200 text-slate-600 space-y-3">
                         <p><strong>Week 10 (Oct 29): Advanced Operations Lecture.</strong> Students are assigned their final "Exploration Type" to apply to their digital system.</p>
                         <p><strong>Week 11 (Nov 5): Digital Evolution Desk Crits.</strong> Desk crits focused on the spatial and architectural qualities of the newly evolved digital forms.</p>
-                        <p><strong>Week 12 (Nov 12): Visualization Workshop.</strong> Introduction to advanced rendering techniques in **D5, Twinmotion, Rhino Render, and Midjourney**.</p>
-                        <p><strong>Week 13 (Nov 19): Final Production Workshop.</strong> In-class workshop on producing the final drawing set and presentation materials.</p>
-                        <p><strong>Week 14 (Nov 26): Final Presentation Dry Run.</strong> A final review of all project components, with individual critiques to refine the narrative and visual quality.</p>
+                        <p><strong>Week 12 (Nov 12): Visualization Workshop.</strong> Introduction to advanced rendering techniques in <strong>D5, Twinmotion, Rhino Render, and Midjourney</strong>.</p>
+                        <p><strong>Week 13 (Nov 19): Final Production Workshop & Presentation Dry Run.</strong> An in-class session to produce final materials and conduct a dry run for the final review.</p>
+                        <p class="font-semibold text-slate-500 bg-slate-100 p-2 rounded-md"><strong>Week 14 (Nov 26): NO CLASS &mdash; Thanksgiving Break.</strong></p>
                         <p class="font-semibold text-sky-600"><strong>Week 15 (Dec 3): FINAL PRESENTATIONS.</strong> Students will present their fully evolved final designs, from concept to visualization.</p>
                         <p><strong>Week 16 (Dec 10): LAST DAY OF CLASSES.</strong> Course wrap-up and final submission of all project deliverables.</p>
                     </div>
@@ -238,3 +274,4 @@
 
 </body>
 </html>
+
