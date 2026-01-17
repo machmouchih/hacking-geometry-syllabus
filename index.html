@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Syllabus: Hacking Geometry (SP26)</title>
+    <title>Course Syllabus: Hacking Geometry</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,22 +23,6 @@
         }
         html {
             scroll-behavior: smooth;
-        }
-        /* Accordion Logic */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-            opacity: 0;
-        }
-        .accordion-open .accordion-content {
-            opacity: 1;
-        }
-        .chevron {
-            transition: transform 0.3s ease;
-        }
-        .accordion-open .chevron {
-            transform: rotate(180deg);
         }
         .timeline-item::before {
             content: '';
@@ -62,7 +46,23 @@
             width: 2px;
             background-color: #e2e8f0; /* slate-200 */
         }
-        /* Custom detail summary marker */
+        /* Accordion Logic */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+        }
+        .accordion-open .accordion-content {
+            opacity: 1;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .accordion-open .chevron {
+            transform: rotate(180deg);
+        }
+        /* Custom details marker */
         details > summary {
             list-style: none;
         }
@@ -73,7 +73,7 @@
 </head>
 <body class="antialiased min-h-screen flex flex-col">
 
-    <header class="sticky-nav bg-white/90 border-b border-slate-200 shadow-sm">
+    <header class="sticky-nav bg-white/80 border-b border-slate-200">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <div class="flex-shrink-0">
@@ -82,7 +82,8 @@
                 <nav class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="#overview" class="text-slate-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium">Overview</a>
-                        <a href="#journey" class="text-slate-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium">The Menu</a>
+                        <a href="#links" class="text-slate-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium">Quick Links</a>
+                        <a href="#journey" class="text-slate-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium">Your Project</a>
                         <a href="#schedule" class="text-slate-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium">Schedule</a>
                     </div>
                 </nav>
@@ -90,126 +91,131 @@
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto py-10 px-4 sm:px-6 lg:px-8 flex-grow">
+    <main class="max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8 flex-grow">
 
         <section id="overview" class="mb-16">
-            <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-6 border-b pb-4 border-slate-200">Course Overview</h2>
-            <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100">
-                <h3 class="text-xl font-semibold text-slate-800 mb-2">The "Hacking" Philosophy</h3>
-                <p class="text-slate-600 leading-relaxed mb-6">
-                    This studio explores the intersection of <strong>geometric rigor</strong> and <strong>architectural reality</strong>. You will not just create shapes; you will define <strong>construction systems</strong>. Starting with a specific geometric taxonomy on Day 1, you will physically test its structural limits, translate its logic into a digital tool, and deploy it onto a challenging site to create a functional Pavilion.
-                </p>
-                
-                <div class="grid md:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
-                    <div>
-                        <h4 class="font-bold text-slate-800 mb-1">🚫 No Generic Exploration</h4>
-                        <p class="text-sm text-slate-600">We don't do random form-finding. Every move must follow a rule.</p>
-                    </div>
-                    <div>
-                        <h4 class="font-bold text-sky-700 mb-1">✅ Real-World Logic</h4>
-                        <p class="text-sm text-slate-600">We stress-test geometry against gravity, site constraints, and material failure.</p>
-                    </div>
-                </div>
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4 border-b pb-2 border-slate-200">Course Overview</h2>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold text-slate-800 mb-2">Course Description</h3>
+                <p class="text-slate-600 leading-relaxed mb-6">This studio is all about exploring architectural shapes. Think of it like a design journey: you'll start with a simple geometric concept and, through a series of creative experiments, evolve it into a complex and unique architectural design. We'll use a hands-on approach to discover the 'rules' of your chosen shape, then use those rules to build amazing things digitally. Our main guide will be the textbook <em>Architectural Geometry</em> by Pottmann et al.</p>
+                <h3 class="text-xl font-semibold text-slate-800 mb-2">Course Objective</h3>
+                <p class="text-slate-600 leading-relaxed mb-4">By the end of this semester, you'll have a complete portfolio for a unique design. The goal is to show a clear design journey, from a basic idea to a final, fully-realized project. You will learn to:</p>
+                <ul class="list-disc list-inside space-y-2 text-slate-600">
+                    <li><strong>Explore</strong> geometric ideas with hands-on physical models.</li>
+                    <li><strong>Translate</strong> your physical discoveries into precise digital models using <strong>Rhino 8 and Maya</strong>.</li>
+                    <li><strong>Evolve</strong> a simple digital form into a complex architectural structure using specific design operations.</li>
+                    <li><strong>Present</strong> your work with high-quality renderings and clear diagrams.</li>
+                </ul>
             </div>
         </section>
 
         <section id="links" class="mb-16">
             <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4 border-b pb-2 border-slate-200">Quick Links</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <a href="#" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all border border-slate-100 flex items-center space-x-3">
+                <a href="#" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center space-x-4">
                     <span class="text-2xl">💻</span>
-                    <div><p class="font-semibold text-slate-800">Zoom Meeting</p></div>
+                    <div>
+                        <p class="font-semibold text-slate-800">Zoom Meeting</p>
+                        <p class="text-sm text-slate-500">Join our weekly class session here.</p>
+                    </div>
                 </a>
-                <a href="https://discord.gg/sAqEHS5w5F" target="_blank" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all border border-slate-100 flex items-center space-x-3">
+                <a href="https://discord.gg/sAqEHS5w5F" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center space-x-4">
                     <span class="text-2xl">💬</span>
-                    <div><p class="font-semibold text-slate-800">Discord Server</p></div>
+                    <div>
+                        <p class="font-semibold text-slate-800">Discord Server</p>
+                        <p class="text-sm text-slate-500">Our main hub for communication and questions.</p>
+                    </div>
                 </a>
-                <a href="https://barch-my.sharepoint.com/:f:/g/personal/hamze_machmouchi_the-bac_edu/IgBwpzuCrpCST6UOaTCDUpQzAXUDuyp6cgH5tqspiO61vtI?e=om1gA6" target="_blank" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all border border-slate-100 flex items-center space-x-3">
-                    <span class="text-2xl">📁</span>
-                    <div><p class="font-semibold text-slate-800">Class Folder</p></div>
+                <a href="https://barch-my.sharepoint.com/:f:/g/personal/hamze_machmouchi_the-bac_edu/IgBwpzuCrpCST6UOaTCDUpQzAXUDuyp6cgH5tqspiO61vtI?e=om1gA6" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center space-x-4">
+                     <span class="text-2xl">📁</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">Class Folder</p>
+                        <p class="text-sm text-slate-500">Access readings, resources, and project files.</p>
+                    </div>
                 </a>
-                <a href="https://barch-my.sharepoint.com/:f:/g/personal/hamze_machmouchi_the-bac_edu/IgBNZdCXpCO3TJBGFHRKN2qZAdXc9eNFtyaVyT5t0Vrnsr8?e=Ca5Epq" target="_blank" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-all border border-slate-100 flex items-center space-x-3">
-                    <span class="text-2xl">📚</span>
-                    <div><p class="font-semibold text-slate-800">Software Tutorials</p></div>
+                <a href="https://barch-my.sharepoint.com/:f:/g/personal/hamze_machmouchi_the-bac_edu/IgBNZdCXpCO3TJBGFHRKN2qZAdXc9eNFtyaVyT5t0Vrnsr8?e=Ca5Epq" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center space-x-4">
+                     <span class="text-2xl">📚</span>
+                    <div>
+                        <p class="font-semibold text-slate-800">Software Tutorials</p>
+                        <p class="text-sm text-slate-500">Guides and tutorials for Rhino, Maya, and more.</p>
+                    </div>
                 </a>
             </div>
         </section>
 
         <section id="journey" class="mb-16">
-            <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4 border-b pb-2 border-slate-200">Your Project: The Menu & Journey</h2>
-            <p class="text-slate-500 mb-8">The semester is built around a single, evolving project divided into four distinct phases.</p>
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4 border-b pb-2 border-slate-200">Your Project: A Four-Step Guide</h2>
+            <p class="text-slate-500 mb-8">The semester is built around a single, evolving project divided into four distinct phases, from initial concept to final visualization.</p>
             
             <div class="relative w-full px-4 mb-12 hidden md:block">
                 <div class="timeline-line"></div>
                 <div class="grid grid-cols-4 text-center">
-                    <div class="timeline-item relative pt-8"><p class="font-bold text-slate-800">Jan 26</p><p class="text-sm text-slate-500">Day 1 Selection</p></div>
-                    <div class="timeline-item relative pt-8"><p class="font-bold text-slate-800">Mar 9</p><p class="text-sm text-slate-500">Midterm</p></div>
-                    <div class="timeline-item relative pt-8"><p class="font-bold text-slate-800">Mar 16</p><p class="text-sm text-slate-500">Spring Break</p></div>
-                    <div class="timeline-item relative pt-8"><p class="font-bold text-slate-800">May 11</p><p class="text-sm text-slate-500">Final Review</p></div>
+                    <div class="timeline-item relative pt-8"><p class="font-semibold">Jan 20</p><p class="text-sm text-slate-500">First Day (Tue)</p></div>
+                    <div class="timeline-item relative pt-8"><p class="font-semibold">Mar 9</p><p class="text-sm text-slate-500">Midterm</p></div>
+                    <div class="timeline-item relative pt-8"><p class="font-semibold">May 4</p><p class="text-sm text-slate-500">Finals</p></div>
+                    <div class="timeline-item relative pt-8"><p class="font-semibold">May 11</p><p class="text-sm text-slate-500">Last Day</p></div>
                 </div>
             </div>
-            
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-sky-500">
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-sky-500">
                     <h3 class="text-2xl font-bold text-slate-800 mb-3">1. Experiments</h3>
-                    <p class="text-slate-600 mb-4">Instead of generic workshops, your physical testing is now dictated by your <strong>Day 1 Selection</strong>. You will join one of these "Material Families" to stress-test your concept:</p>
-                    <details class="group">
-                        <summary class="flex justify-between items-center font-medium text-sky-600 cursor-pointer hover:bg-slate-50 p-2 rounded -ml-2">
-                            <span>View Material Families & Tests</span>
-                            <span class="transition-transform group-open:rotate-180">▼</span>
+                    <p class="text-slate-600 mb-4">Conduct hands-on form-finding experiments to physically explore geometric principles. The class will be divided into three groups for an initial workshop before beginning individual projects.</p>
+                    <details class="text-sm group">
+                        <summary class="font-medium text-sky-600 cursor-pointer flex items-center">
+                            <span>View Group Tasks & Materials</span>
+                            <span class="ml-2 transform group-open:rotate-180 transition-transform">▼</span>
                         </summary>
-                        <div class="mt-3 text-slate-500 space-y-4 text-sm pl-2">
+                        <div class="mt-3 text-slate-500 space-y-4 pl-2">
                             <div>
-                                <p class="font-semibold text-slate-700">Group A: The Developable Surface</p>
-                                <p class="mt-1"><strong>Task:</strong> Folding & Buckling Tests. Where does the crease fail?</p>
-                                <p class="mt-1">Materials: Cardboard, scoring tools, cutting mats.</p>
+                                <p class="font-semibold text-slate-700">Group A (4 Students): The Developable Surface</p>
+                                <p class="mt-1"><strong>Task:</strong> Folding, creasing, and ribboning.</p>
+                                <p class="mt-1"><strong>Materials:</strong> Cardboard, scoring tools, cutting mats, metal rulers.</p>
                             </div>
                             <div>
-                                <p class="font-semibold text-slate-700">Group B: The Tensile Surface</p>
-                                <p class="mt-1"><strong>Task:</strong> Stretching & Anchoring Tests. Measuring tension limits.</p>
-                                <p class="mt-1">Materials: Piano wire, pliers, soap solution.</p>
+                                <p class="font-semibold text-slate-700">Group B (3 Students): The Tensile Surface</p>
+                                <p class="mt-1"><strong>Task:</strong> Soap film studies.</p>
+                                <p class="mt-1"><strong>Materials:</strong> Piano wire, other wire (various gauges), pliers, soap solution (dish soap + glycerine), container for dipping.</p>
                             </div>
                             <div>
-                                <p class="font-semibold text-slate-700">Group C: The Solid Volume</p>
-                                <p class="mt-1"><strong>Task:</strong> Carving & Stacking Tests. Understanding mass and voids.</p>
-                                <p class="mt-1">Materials: Plaster of Paris blocks, modeling clay.</p>
+                                <p class="font-semibold text-slate-700">Group C (3 Students): The Solid Volume</p>
+                                <p class="mt-1"><strong>Task:</strong> Carving, casting, or modeling with clay.</p>
+                                <p class="mt-1"><strong>Materials:</strong> Plaster of Paris blocks, modeling clay, carving tools (rasps, files, sandpaper).</p>
                             </div>
                         </div>
                     </details>
                 </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-sky-500">
+                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-sky-500">
                     <h3 class="text-2xl font-bold text-slate-800 mb-3">2. Concept & Taxonomy</h3>
-                    <p class="text-slate-600 mb-4">Don't just research shapes; research <strong>failures</strong>. Select your taxonomy from the menu below and produce a "Logic Diagram" of its construction rules.</p>
-                    <details class="group">
-                        <summary class="flex justify-between items-center font-medium text-sky-600 cursor-pointer hover:bg-slate-50 p-2 rounded -ml-2">
-                            <span>View The Concept Menu (Day 1 Selection)</span>
-                            <span class="transition-transform group-open:rotate-180">▼</span>
+                    <p class="text-slate-600 mb-4">Research the historical and architectural significance of your assigned concept. Explain its underlying geometric principles and present a "taxonomy" of its properties and precedents.</p>
+                    <details class="text-sm group">
+                        <summary class="font-medium text-sky-600 cursor-pointer flex items-center">
+                            <span>View Student Concepts</span>
+                            <span class="ml-2 transform group-open:rotate-180 transition-transform">▼</span>
                         </summary>
-                        <ul class="list-disc list-inside space-y-2 mt-2 text-sm text-slate-500 pl-2">
-                            <li><strong>Minimal Surfaces</strong> (e.g., Frei Otto)</li>
-                            <li><strong>Developable Surfaces</strong> (e.g., Frank Gehry)</li>
-                            <li><strong>Platonic Solids & Geodesic Spheres</strong> (e.g., Fuller)</li>
-                            <li><strong>Translational Surfaces & Vaults</strong> (e.g., Saarinen)</li>
-                            <li><strong>Ruled Surfaces & HP Surfaces</strong> (e.g., Candela)</li>
-                            <li><strong>Freeform Curves & NURBS</strong> (e.g., Zaha Hadid)</li>
-                            <li><strong>Freeform & Subdivision Surfaces</strong> (e.g., Peter Cook)</li>
-                            <li><strong>Pipe Surfaces & Knots</strong> (e.g., Piano & Rogers)</li>
-                            <li><strong>Space-Filling Polyhedra</strong> (e.g., Jean Renaudie)</li>
-                            <li><strong>Constant Mean Curvature (CMC)</strong> (e.g., Grimshaw)</li>
+                        <ul class="list-disc list-inside space-y-2 mt-2 text-slate-500 pl-2">
+                            <li><strong>Minimal Surfaces</strong> (e.g., Frei Otto's Munich Olympic Stadium)</li>
+                            <li><strong>Developable Surfaces</strong> (e.g., Frank Gehry's Disney Concert Hall)</li>
+                            <li><strong>Platonic Solids & Geodesic Spheres</strong> (e.g., Buckminster Fuller's Biosphere at Expo 67)</li>
+                            <li><strong>Translational Surfaces & Vaults</strong> (e.g., Eero Saarinen's TWA Flight Center)</li>
+                            <li><strong>Ruled Surfaces & HP Surfaces</strong> (e.g., Félix Candela's Los Manantiales Restaurant)</li>
+                            <li><strong>Freeform Curves & NURBS</strong> (e.g., Zaha Hadid's Heydar Aliyev Center)</li>
+                            <li><strong>Freeform & Subdivision Surfaces</strong> (e.g., Peter Cook's Kunsthaus Graz)</li>
+                            <li><strong>Pipe Surfaces & Knots</strong> (e.g., Piano & Rogers' Centre Pompidou)</li>
+                            <li><strong>Space-Filling Polyhedra</strong> (e.g., Jean Renaudie's Ivry-sur-Seine housing complex)</li>
+                            <li><strong>Surfaces of Constant Mean Curvature (CMC)</strong> (e.g., Grimshaw's Eden Project)</li>
                         </ul>
                     </details>
                 </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-sky-500">
+                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-sky-500">
                     <h3 class="text-2xl font-bold text-slate-800 mb-3">3. 3D Modeling</h3>
-                    <p class="text-slate-600 mb-4">Translate your physical findings into a digital system (Rhino/Maya). Then, apply one of these <strong>Exploration Types</strong> to adapt your geometry to a hostile <strong>Site Antagonist</strong>.</p>
-                    <details class="group">
-                        <summary class="flex justify-between items-center font-medium text-sky-600 cursor-pointer hover:bg-slate-50 p-2 rounded -ml-2">
+                    <p class="text-slate-600 mb-4">Create detailed 3D models in <strong>Rhino 8</strong> and <strong>Autodesk Maya</strong>, translating physical discoveries into a precise digital system. Evolve the model by applying an assigned <strong>Exploration Type</strong>.</p>
+                     <details class="text-sm group">
+                        <summary class="font-medium text-sky-600 cursor-pointer flex items-center">
                             <span>View Exploration Types</span>
-                            <span class="transition-transform group-open:rotate-180">▼</span>
+                            <span class="ml-2 transform group-open:rotate-180 transition-transform">▼</span>
                         </summary>
-                        <ul class="list-disc list-inside space-y-1 mt-2 text-sm text-slate-500 pl-2">
+                        <ul class="list-disc list-inside space-y-1 mt-2 text-slate-500 pl-2">
                             <li>Apply Striation & Pattern</li>
                             <li>Deconstruct into a Skeleton</li>
                             <li>Introduce Layering & Stratification</li>
@@ -223,143 +229,85 @@
                         </ul>
                     </details>
                 </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-sky-500">
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">4. Visualization</h3>
-                    <p class="text-slate-600 mb-4">Focus heavily on the <strong>Pavilion Narrative</strong>. Your plan and section must be "Rule-Based"—no arbitrary walls, only geometry.</p>
-                    <div class="bg-slate-50 p-3 rounded text-sm text-slate-500">
-                        <strong>Tools:</strong> D5 Render, AI Post-Processing.
-                    </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-sky-500">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-3">4. Visualization & Presentation</h3>
+                    <p class="text-slate-600">Document your entire design process and present high-quality visualizations. This includes rendered images from tools like <strong>D5, Twinmotion, Rhino Render, or Midjourney</strong>, diagrams illustrating geometric properties, and a discussion of architectural implications.</p>
                 </div>
             </div>
         </section>
 
         <section id="schedule" class="mb-12">
-            <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-6 border-b pb-2 border-slate-200">Detailed Weekly Schedule</h2>
+            <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4 border-b pb-2 border-slate-200">Detailed Weekly Schedule</h2>
             <div class="space-y-4" id="schedule-accordion">
-                
-                <div class="accordion-item bg-white rounded-lg shadow-sm border border-slate-100">
+                <div class="accordion-item bg-white rounded-lg shadow-sm">
                     <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-slate-800 hover:bg-slate-50 rounded-t-lg transition-colors focus:outline-none">
-                        <span>Weeks 1-8: From Physics to Midterm</span>
-                        <svg class="chevron w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span>Weeks 1-8: From Physical Models to Midterm</span>
+                        <svg class="chevron w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div class="accordion-content">
-                        <div class="p-5 border-t border-slate-100 text-slate-600 space-y-4 text-sm">
-                            <div>
-                                <strong class="text-sky-600">Week 1 (Jan 26): The Draft (Day 1 Selection).</strong>
-                                <p class="mt-1">In-Class: "Geometric Menu" Intro. <br><strong>Action:</strong> You pick your geometry family today. No generic exploration.</p>
-                            </div>
-                            <div>
-                                <strong class="text-slate-800">Week 2 (Feb 02): Targeted Experiments.</strong>
-                                <p class="mt-1">Physical experiments specific to your geometry (e.g., soap film for tensile). Models must be measured (grams/cm).</p>
-                            </div>
-                            <div>
-                                <strong class="text-slate-800">Week 3 (Feb 09): Real World Failures.</strong>
-                                <p class="mt-1">Lecture: How geometry fails in construction. Build a complex physical iteration and break it. <br><em>Deliverable: The Autopsy Report.</em></p>
-                            </div>
-                            <div class="bg-yellow-50 p-3 rounded border border-yellow-100">
-                                <strong class="text-yellow-800">Week 4 (Feb 16): Strategic Taxonomy (Presidents Day).</strong>
-                                <p class="mt-1 text-yellow-700">Asynchronous: <strong>The Logic Diagram.</strong> Create a flowchart of your geometry's rules. This is required before opening software.</p>
-                            </div>
-                            <div>
-                                <strong class="text-slate-800">Week 5 (Feb 23): Digital Translation.</strong>
-                                <p class="mt-1"><strong>Live Demo:</strong> Rhino vs. Maya Showdown. Translate the Week 4 Logic Diagram into a clean digital Base System.</p>
-                            </div>
-                            <div>
-                                <strong class="text-slate-800">Week 6 (Mar 02): The Site Antagonist.</strong>
-                                <p class="mt-1">Select a site that challenges your geometry. Establish "Site Rules."</p>
-                            </div>
-                            <div class="border-l-4 border-sky-500 pl-3 py-1">
-                                <strong class="text-sky-600">Week 7 (Mar 09): MIDTERM REVIEW.</strong>
-                                <p class="mt-1 font-medium">Presentation: The Geometric System + The Physical Proof + The Site Strategy.</p>
-                            </div>
-                            <div class="bg-slate-100 p-3 rounded text-center">
-                                <strong class="text-slate-500">Week 8 (Mar 16): NO CLASS &mdash; SPRING BREAK</strong>
-                            </div>
-                        </div>
+                    <div class="accordion-content p-5 border-t border-slate-200 text-slate-600 space-y-3">
+                        <p><strong>Week 1 (Jan 20 - Tuesday): First Day of Classes.</strong> Exceptionally on Tuesday. Introduction to "Hacking Geometry". Students are assigned their individual semester-long Concepts and initial group tasks.</p>
+                        <p><strong>Week 2 (Jan 26): Physical Experiments Workshop.</strong> A hands-on session for groups to begin physical form-finding experiments related to the core techniques.</p>
+                        <p><strong>Week 3 (Feb 02): Concept & Taxonomy.</strong> Students present initial research on their concept's history and geometric principles.</p>
+                        <p><strong>Week 4 (Feb 09): Digital Translation & Good Topology.</strong> A workshop on translating physical forms to digital, with a key session on what makes a "good" and "clean" mesh topology for modeling.</p>
+                        <p><strong>Week 5 (Feb 16): Surface Analysis & Rationalization.</strong> A lecture on understanding surface quality through synclastic (positive) and anticlastic (negative) curvature. We'll use Rhino's Curvature Graph tool for analysis and discuss the concept of rationalization for fabrication.</p>
+                        <p><strong>Week 6 (Feb 23): Parametric Systems & Desk Crits.</strong> Introduction to parametric design to encode the discovered rules for systematic evolution. We will also have desk crits to review progress on digital models.</p>
+                        <p><strong>Week 7 (Mar 02): Parametric Development.</strong> In-class studio session to develop parametric "design rules" with instructor support.</p>
+                        <p class="font-semibold text-sky-600"><strong>Week 8 (Mar 09): MIDTERM PRESENTATIONS.</strong> Students present their full process: Concept, Experiments, and the resulting digital 3D Models.</p>
+                        <p class="bg-slate-100 p-2 text-center text-slate-500 rounded"><strong>Week 9 (Mar 16): NO CLASS &mdash; Spring Break.</strong></p>
                     </div>
                 </div>
-
-                <div class="accordion-item bg-white rounded-lg shadow-sm border border-slate-100">
+                <div class="accordion-item bg-white rounded-lg shadow-sm">
                     <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-slate-800 hover:bg-slate-50 rounded-t-lg transition-colors focus:outline-none">
-                        <span>Weeks 9-15: The Pavilion & Final Production</span>
-                        <svg class="chevron w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <span>Weeks 10-16: Advanced Design & Final Presentation</span>
+                         <svg class="chevron w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
-                    <div class="accordion-content">
-                        <div class="p-5 border-t border-slate-100 text-slate-600 space-y-4 text-sm">
-                            <div>
-                                <strong class="text-slate-800">Week 9 (Mar 23): Program & Narrative.</strong>
-                                <p class="mt-1">Define the User Journey. Moving from "Object" to "Place." (Post-Break Reset).</p>
-                            </div>
-                            <div>
-                                <strong class="text-slate-800">Week 10 (Mar 30): Rule-Based Layout.</strong>
-                                <p class="mt-1">Constraint: Design Plan/Section using *only* your geometric rules.</p>
-                            </div>
-                            <div>
-                                <strong class="text-slate-800">Week 11 (Apr 06): Construction Logic.</strong>
-                                <p class="mt-1">Deep Dive: Tectonics & Joints. Produce a "Wall Section."</p>
-                                <p class="mt-1 text-red-500 text-xs font-semibold">** April 10: Withdrawal Deadline **</p>
-                            </div>
-                            <div>
-                                <strong class="text-slate-800">Week 12 (Apr 13): Visualization.</strong>
-                                <p class="mt-1"><strong>Live Demo:</strong> D5 Render & AI Post-Processing.</p>
-                            </div>
-                            <div>
-                                <strong class="text-slate-800">Week 13 (Apr 20): Production Sprint.</strong>
-                                <p class="mt-1">Desk Crits on Final Narrative. Focus on clarity of argument.</p>
-                            </div>
-                            <div>
-                                <strong class="text-slate-800">Week 14 (Apr 27): Final Dry Run.</strong>
-                                <p class="mt-1">Full run-through of final slides.</p>
-                            </div>
-                            <div class="bg-sky-50 p-3 rounded border border-sky-100">
-                                <strong class="text-sky-700">Week 15 (May 11): FINAL REVIEW.</strong>
-                                <p class="mt-1 text-sky-800">Final Pavilion Portfolio Submission.</p>
-                                <p class="mt-1 text-xs text-slate-500">(Grades are due May 15)</p>
-                            </div>
-                        </div>
+                    <div class="accordion-content p-5 border-t border-slate-200 text-slate-600 space-y-3">
+                        <p><strong>Week 10 (Mar 23): Advanced Operations Lecture.</strong> Students are assigned their final "Exploration Type" to apply to their digital system.</p>
+                        <p><strong>Week 11 (Mar 30): Digital Evolution Desk Crits.</strong> Desk crits focused on the spatial and architectural qualities of the newly evolved digital forms.</p>
+                        <p><strong>Week 12 (Apr 06): Visualization Workshop.</strong> Introduction to advanced rendering techniques in <strong>D5, Twinmotion, Rhino Render, and Midjourney</strong>.</p>
+                        <p><strong>Week 13 (Apr 13): Final Production Workshop.</strong> In-class session to produce final materials.</p>
+                        <p><strong>Week 14 (Apr 20): Desk Crits & Refinement.</strong> Final push for production.</p>
+                        <p><strong>Week 15 (Apr 27): Final Dry Run.</strong> Presentation rehearsal.</p>
+                        <p class="font-semibold text-sky-600"><strong>Week 16 (May 04): FINAL PRESENTATIONS.</strong> Students will present their fully evolved final designs, from concept to visualization.</p>
+                        <p><strong>Last Day (May 11): Wrap Up.</strong> Final submission and course wrap-up.</p>
                     </div>
                 </div>
-
             </div>
         </section>
 
     </main>
 
     <footer class="bg-white border-t border-slate-200 mt-12">
-        <div class="max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-400">
+        <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
             <p>Hacking Geometry &mdash; Spring 2026</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const accordionHeaders = document.querySelectorAll('.accordion-header, summary');
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
 
             accordionHeaders.forEach(header => {
                 header.addEventListener('click', (event) => {
-                    // Only run logic for buttons (schedule accordion), allow <details> to handle themselves
-                    if (header.tagName === 'BUTTON') {
-                        const item = header.parentElement;
-                        const content = item.querySelector('.accordion-content');
-                        const isOpen = item.classList.contains('accordion-open');
-
-                        // Close others
-                        document.querySelectorAll('.accordion-item').forEach(otherItem => {
-                            if (otherItem !== item) {
-                                otherItem.classList.remove('accordion-open');
-                                otherItem.querySelector('.accordion-content').style.maxHeight = null;
-                            }
-                        });
-
-                        // Toggle current
-                        if (isOpen) {
-                            item.classList.remove('accordion-open');
-                            content.style.maxHeight = null;
-                        } else {
-                            item.classList.add('accordion-open');
-                            content.style.maxHeight = content.scrollHeight + "px";
+                    const item = header.parentElement;
+                    const content = item.querySelector('.accordion-content');
+                    const isOpen = item.classList.contains('accordion-open');
+                    
+                    // Close others
+                    document.querySelectorAll('.accordion-item').forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('accordion-open');
+                            otherItem.querySelector('.accordion-content').style.maxHeight = null;
                         }
+                    });
+
+                    // Toggle current
+                    if (isOpen) {
+                        item.classList.remove('accordion-open');
+                        content.style.maxHeight = null;
+                    } else {
+                        item.classList.add('accordion-open');
+                        content.style.maxHeight = content.scrollHeight + "px";
                     }
                 });
             });
