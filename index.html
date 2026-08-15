@@ -3,16 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Syllabus: Hacking Geometry</title>
+    <title>Hacking Geometry &middot; Fall 2026</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['"Libre Franklin"', '"Franklin Gothic Medium"', '"Franklin Gothic"', 'Roboto', 'sans-serif'],
+                        body: ['Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+                    },
+                    colors: {
+                        paper: '#f5f3ef',
+                        card: '#ffffff',
+                        ink: '#17171a',
+                        graphite: '#4a4a52',
+                        mist: '#8a8a94',
+                        rule: '#d9d5cd',
+                        accent: '#d24317',
+                        accentdark: '#a83512',
+                    },
+                }
+            }
+        }
+    </script>
     <style>
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* slate-50 */
-            color: #334155; /* slate-700 */
+            font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f3ef;
+            color: #4a4a52;
+        }
+        h1, h2, h3, h4, .display {
+            font-family: 'Libre Franklin', 'Franklin Gothic Medium', 'Franklin Gothic', sans-serif;
         }
         .sticky-nav {
             position: sticky;
@@ -21,298 +47,718 @@
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
-        html {
-            scroll-behavior: smooth;
+        .eyebrow {
+            font-family: 'Libre Franklin', 'Franklin Gothic Medium', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.14em;
+            font-weight: 700;
+            font-size: 0.6875rem;
         }
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: -0.75rem;
-            transform: translateX(-50%);
-            width: 1.5rem;
-            height: 1.5rem;
-            background-color: white;
-            border: 3px solid #0ea5e9; /* sky-500 */
-            border-radius: 9999px;
-            z-index: 10;
-        }
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 2px;
-            background-color: #e2e8f0; /* slate-200 */
-        }
-        /* Accordion Logic */
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-            opacity: 0;
-        }
-        .accordion-open .accordion-content {
-            opacity: 1;
-        }
-        .chevron {
-            transition: transform 0.3s ease;
-        }
-        .accordion-open .chevron {
-            transform: rotate(180deg);
-        }
-        /* Custom details marker */
-        details > summary {
-            list-style: none;
-        }
-        details > summary::-webkit-details-marker {
-            display: none;
+        details > summary { list-style: none; cursor: pointer; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] .disclosure-arrow { transform: rotate(180deg); }
+        .disclosure-arrow { transition: transform 0.2s ease; display: inline-block; }
+        .hatch {
+            background-image: repeating-linear-gradient(
+                45deg,
+                transparent, transparent 5px,
+                rgba(23,23,26,0.05) 5px, rgba(23,23,26,0.05) 6px
+            );
         }
     </style>
 </head>
-<body class="antialiased min-h-screen flex flex-col">
+<body class="antialiased min-h-screen flex flex-col font-body">
 
-    <header class="sticky-nav bg-white/80 border-b border-slate-200">
+    <header class="sticky-nav bg-paper/90 border-b border-rule">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0">
-                    <h1 class="text-xl font-bold text-slate-800">Hacking Geometry <span class="text-sky-600 text-sm font-medium ml-2">Spring 2026</span></h1>
+                <div class="flex items-baseline gap-3">
+                    <span class="font-display font-extrabold text-lg text-ink tracking-tight">HACKING GEOMETRY</span>
+                    <span class="eyebrow text-accent hidden sm:inline">Fall 2026</span>
                 </div>
                 <nav class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#overview" class="text-slate-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium">Overview</a>
-                        <a href="#links" class="text-slate-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium">Quick Links</a>
-                        <a href="#journey" class="text-slate-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium">Your Project</a>
-                        <a href="#schedule" class="text-slate-600 hover:text-sky-600 px-3 py-2 rounded-md text-sm font-medium">Schedule</a>
+                    <div class="flex items-baseline space-x-1">
+                        <a href="#overview" class="text-graphite hover:text-accent px-3 py-2 text-sm font-medium">Overview</a>
+                        <a href="#howitworks" class="text-graphite hover:text-accent px-3 py-2 text-sm font-medium">How It Works</a>
+                        <a href="#links" class="text-graphite hover:text-accent px-3 py-2 text-sm font-medium">Links</a>
+                        <a href="#journey" class="text-graphite hover:text-accent px-3 py-2 text-sm font-medium">Project</a>
+                        <a href="#schedule" class="text-graphite hover:text-accent px-3 py-2 text-sm font-medium">Schedule</a>
                     </div>
                 </nav>
             </div>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8 flex-grow">
+    <main class="flex-grow">
 
-        <section id="overview" class="mb-16">
-            <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4 border-b pb-2 border-slate-200">Course Overview</h2>
-            <div class="bg-white p-6 rounded-lg shadow-sm">
-                <h3 class="text-xl font-semibold text-slate-800 mb-2">Course Description</h3>
-                <p class="text-slate-600 leading-relaxed mb-6">This studio is all about exploring architectural shapes. Think of it like a design journey: you'll start with a simple geometric concept and, through a series of creative experiments, evolve it into a complex and unique architectural design. We'll use a hands-on approach to discover the 'rules' of your chosen shape, then use those rules to build amazing things digitally. Our main guide will be the textbook <em>Architectural Geometry</em> by Pottmann et al.</p>
-                <h3 class="text-xl font-semibold text-slate-800 mb-2">Course Objective</h3>
-                <p class="text-slate-600 leading-relaxed mb-4">By the end of this semester, you'll have a complete portfolio for a unique design. The goal is to show a clear design journey, from a basic idea to a final, fully-realized project. You will learn to:</p>
-                <ul class="list-disc list-inside space-y-2 text-slate-600">
-                    <li><strong>Explore</strong> geometric ideas with hands-on physical models.</li>
-                    <li><strong>Translate</strong> your physical discoveries into precise digital models using <strong>Rhino 8 and Maya</strong>.</li>
-                    <li><strong>Evolve</strong> a simple digital form into a complex architectural structure using specific design operations.</li>
-                    <li><strong>Present</strong> your work with high-quality renderings and clear diagrams.</li>
-                </ul>
+        <!-- HERO -->
+        <section class="border-b border-rule bg-ink text-paper">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-20">
+                <p class="eyebrow text-accent mb-4">Boston Architectural College &middot; Wednesdays &middot; Aug 26 to Dec 2, 2026</p>
+                <h1 class="font-display font-extrabold text-4xl md:text-6xl tracking-tight text-white leading-[1.05] mb-5">
+                    Find the rule.<br>Then build the machine.
+                </h1>
+                <p class="text-base md:text-lg text-paper/70 max-w-2xl leading-relaxed">
+                    A studio about architectural form, where every student leaves with two things: a design,
+                    and the custom tool that generated it.
+                </p>
+                <div class="flex flex-wrap gap-x-8 gap-y-3 mt-9 pt-7 border-t border-white/15">
+                    <div>
+                        <p class="eyebrow text-accent mb-1">Sessions</p>
+                        <p class="font-display font-bold text-2xl text-white">11 live</p>
+                    </div>
+                    <div>
+                        <p class="eyebrow text-accent mb-1">Midterm</p>
+                        <p class="font-display font-bold text-2xl text-white">Oct 7</p>
+                    </div>
+                    <div>
+                        <p class="eyebrow text-accent mb-1">Final</p>
+                        <p class="font-display font-bold text-2xl text-white">Dec 2</p>
+                    </div>
+                    <div>
+                        <p class="eyebrow text-accent mb-1">Software</p>
+                        <p class="font-display font-bold text-2xl text-white">Rhino 8 &middot; Maya</p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section id="links" class="mb-16">
-            <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4 border-b pb-2 border-slate-200">Quick Links</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <a href="#" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center space-x-4">
+        <div class="max-w-5xl mx-auto py-14 px-4 sm:px-6 lg:px-8">
+
+        <!-- OVERVIEW -->
+        <section id="overview" class="mb-20 scroll-mt-20">
+            <p class="eyebrow text-accent mb-2">01</p>
+            <h2 class="font-display text-3xl font-extrabold tracking-tight text-ink mb-6 pb-3 border-b-2 border-ink">Course Overview</h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-2 space-y-5">
+                    <p class="text-graphite leading-relaxed">
+                        This studio is about exploring architectural shapes. You will start with a single geometric concept
+                        and, through a series of hands-on experiments, evolve it into a complex architectural design.
+                        We discover the <strong class="text-ink">rules</strong> of a shape by hand, and then we encode those
+                        rules so the computer can run them for us.
+                    </p>
+                    <p class="text-graphite leading-relaxed">
+                        That last step is what makes this course different. A rule you can write down is a rule you can
+                        program. By the midterm, you will not just have a model of your shape. You will have a working
+                        tool that produces a whole family of them, written by you, with AI as your coding partner.
+                        No prior programming experience is expected or required.
+                    </p>
+                    <p class="text-graphite leading-relaxed">
+                        Our main reference is <em>Architectural Geometry</em> by Pottmann et al., supported by the
+                        class Geometry Almanac.
+                    </p>
+                </div>
+
+                <div class="bg-card border border-rule p-6">
+                    <p class="eyebrow text-accent mb-4">You will learn to</p>
+                    <ul class="space-y-4 text-sm text-graphite">
+                        <li class="flex gap-3">
+                            <span class="font-display font-extrabold text-accent">01</span>
+                            <span><strong class="text-ink">Explore</strong> geometric ideas through physical models.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="font-display font-extrabold text-accent">02</span>
+                            <span><strong class="text-ink">Translate</strong> those discoveries into precise digital models in Rhino 8 and Maya.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="font-display font-extrabold text-accent">03</span>
+                            <span><strong class="text-ink">Encode</strong> your rules into a parametric tool you build yourself.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="font-display font-extrabold text-accent">04</span>
+                            <span><strong class="text-ink">Evolve</strong> a simple form into a complex architectural structure.</span>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="font-display font-extrabold text-accent">05</span>
+                            <span><strong class="text-ink">Present</strong> your work with high quality renderings and clear diagrams.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- HOW IT WORKS -->
+        <section id="howitworks" class="mb-20 scroll-mt-20">
+            <p class="eyebrow text-accent mb-2">02</p>
+            <h2 class="font-display text-3xl font-extrabold tracking-tight text-ink mb-3 pb-3 border-b-2 border-ink">How This Class Works</h2>
+            <p class="text-graphite mb-8 max-w-3xl leading-relaxed">
+                This is an online studio, and studios only work when people can see each other's work in progress.
+                Four small rituals keep the class alive between Wednesdays. None of them take long, and all of them count.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-px bg-rule border border-rule">
+                <div class="bg-card p-6">
+                    <div class="flex items-baseline gap-3 mb-3">
+                        <span class="text-2xl">📌</span>
+                        <h3 class="font-display font-bold text-lg text-ink">The Sunday Pin-Up</h3>
+                    </div>
+                    <p class="text-sm text-graphite leading-relaxed mb-3">
+                        Every Sunday by 9pm, post <strong class="text-ink">one image</strong> of what you are working on
+                        and <strong class="text-ink">one sentence</strong> about what is stuck. That is the whole
+                        assignment. Ugly work in progress is not just allowed, it is the point.
+                    </p>
+                    <p class="text-xs text-mist">Thirty seconds of effort. Counts toward participation.</p>
+                </div>
+
+                <div class="bg-card p-6">
+                    <div class="flex items-baseline gap-3 mb-3">
+                        <span class="text-2xl">🔁</span>
+                        <h3 class="font-display font-bold text-lg text-ink">Your Response Partner</h3>
+                    </div>
+                    <p class="text-sm text-graphite leading-relaxed mb-3">
+                        Each week you are assigned one classmate by name. You reply to their pin-up by
+                        <strong class="text-ink">Tuesday night</strong>. One useful observation, one question.
+                        Rotates weekly so you see everyone's project by December.
+                    </p>
+                    <p class="text-xs text-mist">Nobody posts into silence in this class.</p>
+                </div>
+
+                <div class="bg-card p-6">
+                    <div class="flex items-baseline gap-3 mb-3">
+                        <span class="text-2xl">🤝</span>
+                        <h3 class="font-display font-bold text-lg text-ink">Your Crit Buddy</h3>
+                    </div>
+                    <p class="text-sm text-graphite leading-relaxed mb-3">
+                        One fixed partner for the whole semester. They are the person who notices when you go quiet,
+                        the person you text at 11pm when Rhino crashes, and your first reviewer before anything
+                        goes to a crit.
+                    </p>
+                    <p class="text-xs text-mist">Assigned in Week 1.</p>
+                </div>
+
+                <div class="bg-card p-6">
+                    <div class="flex items-baseline gap-3 mb-3">
+                        <span class="text-2xl">📓</span>
+                        <h3 class="font-display font-bold text-lg text-ink">Your Prompt Log</h3>
+                    </div>
+                    <p class="text-sm text-graphite leading-relaxed mb-3">
+                        Keep the conversations you have with AI while building your tool. The dead ends, the
+                        rewrites, the moment you realized you were asking the wrong question. This is your
+                        process sketchbook, and it is a graded part of both reviews.
+                    </p>
+                    <p class="text-xs text-mist">Submitted at midterm and final.</p>
+                </div>
+            </div>
+
+            <div class="mt-px bg-ink text-paper p-6 border border-ink">
+                <div class="flex items-baseline gap-3 mb-3">
+                    <span class="text-2xl">💥</span>
+                    <h3 class="font-display font-bold text-lg text-white">The Beautiful Failures Wall</h3>
+                </div>
+                <p class="text-sm text-paper/75 leading-relaxed max-w-3xl">
+                    A running gallery of everything that broke. Parameters pushed past the point of sense, geometry that
+                    exploded, off by one errors that produced something better than the thing you were aiming for.
+                    Post them. At the final review we vote on the best one, and more than one project this semester
+                    will end up being built out of a bug.
+                </p>
+            </div>
+        </section>
+
+        <!-- QUICK LINKS -->
+        <section id="links" class="mb-20 scroll-mt-20">
+            <p class="eyebrow text-accent mb-2">03</p>
+            <h2 class="font-display text-3xl font-extrabold tracking-tight text-ink mb-6 pb-3 border-b-2 border-ink">Quick Links</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-px bg-rule border border-rule">
+                <a href="#" class="bg-card p-5 hover:bg-paper transition-colors flex items-center gap-4 group">
                     <span class="text-2xl">💻</span>
                     <div>
-                        <p class="font-semibold text-slate-800">Zoom Meeting</p>
-                        <p class="text-sm text-slate-500">Join our weekly class session here.</p>
+                        <p class="font-display font-bold text-ink group-hover:text-accent transition-colors">Zoom Meeting</p>
+                        <p class="text-sm text-mist">Join the weekly Wednesday session.</p>
                     </div>
                 </a>
-                <a href="https://discord.gg/sAqEHS5w5F" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center space-x-4">
+                <a href="https://geometryfieldguide.netlify.app/geometry-almanac.html" target="_blank" rel="noopener noreferrer" class="bg-card p-5 hover:bg-paper transition-colors flex items-center gap-4 group">
+                    <span class="text-2xl">📖</span>
+                    <div>
+                        <p class="font-display font-bold text-ink group-hover:text-accent transition-colors">Geometry Almanac</p>
+                        <p class="text-sm text-mist">The field guide. Concepts and modeling help.</p>
+                    </div>
+                </a>
+                <a href="https://discord.gg/sAqEHS5w5F" target="_blank" rel="noopener noreferrer" class="bg-card p-5 hover:bg-paper transition-colors flex items-center gap-4 group">
                     <span class="text-2xl">💬</span>
                     <div>
-                        <p class="font-semibold text-slate-800">Discord Server</p>
-                        <p class="text-sm text-slate-500">Our main hub for communication and questions.</p>
+                        <p class="font-display font-bold text-ink group-hover:text-accent transition-colors">Discord</p>
+                        <p class="text-sm text-mist">Pin-ups, questions, failures wall.</p>
                     </div>
                 </a>
-                <a href="https://barch-my.sharepoint.com/:f:/g/personal/hamze_machmouchi_the-bac_edu/IgBwpzuCrpCST6UOaTCDUpQzAXUDuyp6cgH5tqspiO61vtI?e=om1gA6" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center space-x-4">
-                     <span class="text-2xl">📁</span>
+                <a href="https://barch-my.sharepoint.com/:f:/g/personal/hamze_machmouchi_the-bac_edu/IgDFWbRZ6wd2T6SRhPZOTM9xAYAh_UzcC4HoC3C-aN-0HQ8?e=GGNudQ" target="_blank" rel="noopener noreferrer" class="bg-card p-5 hover:bg-paper transition-colors flex items-center gap-4 group">
+                    <span class="text-2xl">🗂️</span>
                     <div>
-                        <p class="font-semibold text-slate-800">Class Folder</p>
-                        <p class="text-sm text-slate-500">Access readings, resources, and project files.</p>
+                        <p class="font-display font-bold text-ink group-hover:text-accent transition-colors">Course Drive</p>
+                        <p class="text-sm text-mist">Main shared drive for the course.</p>
                     </div>
                 </a>
-                <a href="https://barch-my.sharepoint.com/:f:/g/personal/hamze_machmouchi_the-bac_edu/IgBNZdCXpCO3TJBGFHRKN2qZAdXc9eNFtyaVyT5t0Vrnsr8?e=Ca5Epq" target="_blank" rel="noopener noreferrer" class="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow flex items-center space-x-4">
-                     <span class="text-2xl">📚</span>
+                <a href="https://barch-my.sharepoint.com/:f:/g/personal/hamze_machmouchi_the-bac_edu/IgBJjKCC-_9XT4wo-IOO2HoFARcDYezBlWIZ8LgYmyXIKx0?e=VCG76d" target="_blank" rel="noopener noreferrer" class="bg-card p-5 hover:bg-paper transition-colors flex items-center gap-4 group">
+                    <span class="text-2xl">📁</span>
                     <div>
-                        <p class="font-semibold text-slate-800">Software Tutorials</p>
-                        <p class="text-sm text-slate-500">Guides and tutorials for Rhino, Maya, and more.</p>
+                        <p class="font-display font-bold text-ink group-hover:text-accent transition-colors">Class Folder</p>
+                        <p class="text-sm text-mist">Readings, resources, and project files.</p>
+                    </div>
+                </a>
+                <a href="https://barch-my.sharepoint.com/:f:/g/personal/hamze_machmouchi_the-bac_edu/IgDuB-pwNIulSqfrln1g8aAwAbcXGu9AGbWDylg3BFIKW6A?e=Nm2Mr2" target="_blank" rel="noopener noreferrer" class="bg-card p-5 hover:bg-paper transition-colors flex items-center gap-4 group">
+                    <span class="text-2xl">📚</span>
+                    <div>
+                        <p class="font-display font-bold text-ink group-hover:text-accent transition-colors">Software Tutorials</p>
+                        <p class="text-sm text-mist">Guides for Rhino, Maya, and more.</p>
                     </div>
                 </a>
             </div>
         </section>
 
-        <section id="journey" class="mb-16">
-            <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4 border-b pb-2 border-slate-200">Your Project: A Four-Step Guide</h2>
-            <p class="text-slate-500 mb-8">The semester is built around a single, evolving project divided into four distinct phases, from initial concept to final visualization.</p>
-            
-            <div class="relative w-full px-4 mb-12 hidden md:block">
-                <div class="timeline-line"></div>
-                <div class="grid grid-cols-4 text-center">
-                    <div class="timeline-item relative pt-8"><p class="font-semibold">Jan 20</p><p class="text-sm text-slate-500">First Day (Tue)</p></div>
-                    <div class="timeline-item relative pt-8"><p class="font-semibold">Mar 9</p><p class="text-sm text-slate-500">Midterm</p></div>
-                    <div class="timeline-item relative pt-8"><p class="font-semibold">May 4</p><p class="text-sm text-slate-500">Finals</p></div>
-                    <div class="timeline-item relative pt-8"><p class="font-semibold">May 11</p><p class="text-sm text-slate-500">Last Day</p></div>
-                </div>
-            </div>
+        <!-- PROJECT -->
+        <section id="journey" class="mb-20 scroll-mt-20">
+            <p class="eyebrow text-accent mb-2">04</p>
+            <h2 class="font-display text-3xl font-extrabold tracking-tight text-ink mb-3 pb-3 border-b-2 border-ink">Your Project</h2>
+            <p class="text-graphite mb-8 max-w-3xl leading-relaxed">
+                One project, running the whole semester, in five phases. Each phase feeds the next. You keep the same
+                concept from August to December, and you watch it change.
+            </p>
 
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-sky-500">
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">1. Experiments</h3>
-                    <p class="text-slate-600 mb-4">Conduct hands-on form-finding experiments to physically explore geometric principles. The class will be divided into three groups for an initial workshop before beginning individual projects.</p>
-                    <details class="text-sm group">
-                        <summary class="font-medium text-sky-600 cursor-pointer flex items-center">
-                            <span>View Group Tasks & Materials</span>
-                            <span class="ml-2 transform group-open:rotate-180 transition-transform">▼</span>
-                        </summary>
-                        <div class="mt-3 text-slate-500 space-y-4 pl-2">
-                            <div>
-                                <p class="font-semibold text-slate-700">Group A (4 Students): The Developable Surface</p>
-                                <p class="mt-1"><strong>Task:</strong> Folding, creasing, and ribboning.</p>
-                                <p class="mt-1"><strong>Materials:</strong> Cardboard, scoring tools, cutting mats, metal rulers.</p>
+            <div class="space-y-px bg-rule border border-rule">
+
+                <!-- Phase 1 -->
+                <div class="bg-card p-6 md:p-7">
+                    <div class="flex items-start gap-5">
+                        <span class="font-display font-extrabold text-4xl text-accent leading-none">1</span>
+                        <div class="flex-1">
+                            <h3 class="font-display text-xl font-bold text-ink mb-2">Experiments</h3>
+                            <p class="text-graphite mb-4 leading-relaxed">
+                                Hands-on form finding. Before you touch a computer, you discover how your geometry behaves
+                                by making it with your hands. The class splits into three groups for the opening workshop.
+                                You leave with a <strong class="text-ink">rule card</strong>: your geometry's behavior,
+                                written in plain English. That card becomes your code later.
+                            </p>
+                            <details class="text-sm group">
+                                <summary class="font-display font-semibold text-accent hover:text-accentdark">
+                                    Group tasks and materials <span class="disclosure-arrow">▾</span>
+                                </summary>
+                                <div class="mt-4 space-y-4 pl-4 border-l-2 border-rule">
+                                    <div>
+                                        <p class="font-display font-bold text-ink">Group A &middot; The Developable Surface</p>
+                                        <p class="text-graphite mt-1"><strong>Task:</strong> Folding, creasing, and ribboning.</p>
+                                        <p class="text-mist mt-1"><strong>Materials:</strong> Cardboard, scoring tools, cutting mats, metal rulers.</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-display font-bold text-ink">Group B &middot; The Tensile Surface</p>
+                                        <p class="text-graphite mt-1"><strong>Task:</strong> Soap film studies.</p>
+                                        <p class="text-mist mt-1"><strong>Materials:</strong> Piano wire, wire in various gauges, pliers, soap solution with dish soap and glycerine, dipping container.</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-display font-bold text-ink">Group C &middot; The Solid Volume</p>
+                                        <p class="text-graphite mt-1"><strong>Task:</strong> Carving, casting, or modeling with clay.</p>
+                                        <p class="text-mist mt-1"><strong>Materials:</strong> Plaster of Paris blocks, modeling clay, carving tools such as rasps, files, and sandpaper.</p>
+                                    </div>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="bg-card p-6 md:p-7">
+                    <div class="flex items-start gap-5">
+                        <span class="font-display font-extrabold text-4xl text-accent leading-none">2</span>
+                        <div class="flex-1">
+                            <h3 class="font-display text-xl font-bold text-ink mb-2">Concept &amp; Taxonomy</h3>
+                            <p class="text-graphite mb-4 leading-relaxed">
+                                Research your assigned concept: its history, its architecture, and the geometry underneath it.
+                                Instead of a slide deck that gets shown once and forgotten, you publish an
+                                <strong class="text-ink">Almanac page</strong> that becomes permanent class reference material.
+                                Your research must end with a <strong class="text-ink">parameter list</strong>: what varies in
+                                your geometry, and what stays fixed. That list is the specification for the tool you build in Phase 3.
+                            </p>
+                            <details class="text-sm group">
+                                <summary class="font-display font-semibold text-accent hover:text-accentdark">
+                                    The ten concepts <span class="disclosure-arrow">▾</span>
+                                </summary>
+                                <ul class="mt-4 space-y-2 pl-4 border-l-2 border-rule text-graphite">
+                                    <li><strong class="text-ink">Minimal Surfaces</strong> &middot; Frei Otto, Munich Olympic Stadium</li>
+                                    <li><strong class="text-ink">Developable Surfaces</strong> &middot; Frank Gehry, Disney Concert Hall</li>
+                                    <li><strong class="text-ink">Platonic Solids &amp; Geodesic Spheres</strong> &middot; Buckminster Fuller, Biosphere at Expo 67</li>
+                                    <li><strong class="text-ink">Translational Surfaces &amp; Vaults</strong> &middot; Eero Saarinen, TWA Flight Center</li>
+                                    <li><strong class="text-ink">Ruled &amp; HP Surfaces</strong> &middot; Félix Candela, Los Manantiales</li>
+                                    <li><strong class="text-ink">Freeform Curves &amp; NURBS</strong> &middot; Zaha Hadid, Heydar Aliyev Center</li>
+                                    <li><strong class="text-ink">Freeform &amp; Subdivision Surfaces</strong> &middot; Peter Cook, Kunsthaus Graz</li>
+                                    <li><strong class="text-ink">Pipe Surfaces &amp; Knots</strong> &middot; Piano &amp; Rogers, Centre Pompidou</li>
+                                    <li><strong class="text-ink">Space-Filling Polyhedra</strong> &middot; Jean Renaudie, Ivry-sur-Seine</li>
+                                    <li><strong class="text-ink">Constant Mean Curvature Surfaces</strong> &middot; Grimshaw, Eden Project</li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="bg-card p-6 md:p-7 border-l-4 border-accent">
+                    <div class="flex items-start gap-5">
+                        <span class="font-display font-extrabold text-4xl text-accent leading-none">3</span>
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-3 mb-2">
+                                <h3 class="font-display text-xl font-bold text-ink">Build Your Own Tool</h3>
+                                <span class="eyebrow bg-accent text-white px-2 py-1">New this semester</span>
                             </div>
-                            <div>
-                                <p class="font-semibold text-slate-700">Group B (3 Students): The Tensile Surface</p>
-                                <p class="mt-1"><strong>Task:</strong> Soap film studies.</p>
-                                <p class="mt-1"><strong>Materials:</strong> Piano wire, other wire (various gauges), pliers, soap solution (dish soap + glycerine), container for dipping.</p>
-                            </div>
-                            <div>
-                                <p class="font-semibold text-slate-700">Group C (3 Students): The Solid Volume</p>
-                                <p class="mt-1"><strong>Task:</strong> Carving, casting, or modeling with clay.</p>
-                                <p class="mt-1"><strong>Materials:</strong> Plaster of Paris blocks, modeling clay, carving tools (rasps, files, sandpaper).</p>
+                            <p class="text-graphite mb-4 leading-relaxed">
+                                You wrote your rule down in Phase 1. Now you make the computer run it. Using AI as a coding
+                                partner, you build a small script that generates your geometry from a handful of inputs.
+                                Then you turn the inputs into dials, and suddenly you are not making one shape.
+                                You are making every shape your rule allows.
+                            </p>
+                            <p class="text-graphite mb-4 leading-relaxed">
+                                We work in <strong class="text-ink">Rhino 8's built-in Python editor</strong>, so there is
+                                nothing new to install and your scripts operate directly on the models you are already building.
+                                You do not need to have written code before. You need to be able to describe what you want
+                                clearly, which is a design skill you already have.
+                            </p>
+                            <div class="bg-paper border border-rule p-4 text-sm">
+                                <p class="eyebrow text-accent mb-2">The rule of the road</p>
+                                <p class="text-graphite leading-relaxed">
+                                    You must be able to explain your own tool. Three sentences per function, in your own words,
+                                    at both reviews. Code you cannot explain does not count, no matter how well it runs.
+                                </p>
                             </div>
                         </div>
-                    </details>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-sky-500">
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">2. Concept & Taxonomy</h3>
-                    <p class="text-slate-600 mb-4">Research the historical and architectural significance of your assigned concept. Explain its underlying geometric principles and present a "taxonomy" of its properties and precedents.</p>
-                    <details class="text-sm group">
-                        <summary class="font-medium text-sky-600 cursor-pointer flex items-center">
-                            <span>View Student Concepts</span>
-                            <span class="ml-2 transform group-open:rotate-180 transition-transform">▼</span>
-                        </summary>
-                        <ul class="list-disc list-inside space-y-2 mt-2 text-slate-500 pl-2">
-                            <li><strong>Minimal Surfaces</strong> (e.g., Frei Otto's Munich Olympic Stadium)</li>
-                            <li><strong>Developable Surfaces</strong> (e.g., Frank Gehry's Disney Concert Hall)</li>
-                            <li><strong>Platonic Solids & Geodesic Spheres</strong> (e.g., Buckminster Fuller's Biosphere at Expo 67)</li>
-                            <li><strong>Translational Surfaces & Vaults</strong> (e.g., Eero Saarinen's TWA Flight Center)</li>
-                            <li><strong>Ruled Surfaces & HP Surfaces</strong> (e.g., Félix Candela's Los Manantiales Restaurant)</li>
-                            <li><strong>Freeform Curves & NURBS</strong> (e.g., Zaha Hadid's Heydar Aliyev Center)</li>
-                            <li><strong>Freeform & Subdivision Surfaces</strong> (e.g., Peter Cook's Kunsthaus Graz)</li>
-                            <li><strong>Pipe Surfaces & Knots</strong> (e.g., Piano & Rogers' Centre Pompidou)</li>
-                            <li><strong>Space-Filling Polyhedra</strong> (e.g., Jean Renaudie's Ivry-sur-Seine housing complex)</li>
-                            <li><strong>Surfaces of Constant Mean Curvature (CMC)</strong> (e.g., Grimshaw's Eden Project)</li>
-                        </ul>
-                    </details>
+
+                <!-- Phase 4 -->
+                <div class="bg-card p-6 md:p-7">
+                    <div class="flex items-start gap-5">
+                        <span class="font-display font-extrabold text-4xl text-accent leading-none">4</span>
+                        <div class="flex-1">
+                            <h3 class="font-display text-xl font-bold text-ink mb-2">Evolve</h3>
+                            <p class="text-graphite mb-4 leading-relaxed">
+                                Build detailed models in <strong class="text-ink">Rhino 8</strong> and
+                                <strong class="text-ink">Autodesk Maya</strong>, then push the system somewhere new by
+                                applying your assigned <strong class="text-ink">Exploration Type</strong>. Think of this as
+                                a second function added to the tool you already built, not a fresh start.
+                            </p>
+                            <details class="text-sm group">
+                                <summary class="font-display font-semibold text-accent hover:text-accentdark">
+                                    Exploration types <span class="disclosure-arrow">▾</span>
+                                </summary>
+                                <ul class="mt-4 grid sm:grid-cols-2 gap-x-6 gap-y-2 pl-4 border-l-2 border-rule text-graphite">
+                                    <li>Apply striation and pattern</li>
+                                    <li>Deconstruct into a skeleton</li>
+                                    <li>Introduce layering and stratification</li>
+                                    <li>Carve sub-volumes</li>
+                                    <li>Aggregate as clustered parts</li>
+                                    <li>Define the boundary condition</li>
+                                    <li>Develop spliced or interlocked joints</li>
+                                    <li>Incorporate pleating</li>
+                                    <li>Differentiate the intensity</li>
+                                    <li>Create a nested loop</li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-sky-500">
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">3. 3D Modeling</h3>
-                    <p class="text-slate-600 mb-4">Create detailed 3D models in <strong>Rhino 8</strong> and <strong>Autodesk Maya</strong>, translating physical discoveries into a precise digital system. Evolve the model by applying an assigned <strong>Exploration Type</strong>.</p>
-                     <details class="text-sm group">
-                        <summary class="font-medium text-sky-600 cursor-pointer flex items-center">
-                            <span>View Exploration Types</span>
-                            <span class="ml-2 transform group-open:rotate-180 transition-transform">▼</span>
-                        </summary>
-                        <ul class="list-disc list-inside space-y-1 mt-2 text-slate-500 pl-2">
-                            <li>Apply Striation & Pattern</li>
-                            <li>Deconstruct into a Skeleton</li>
-                            <li>Introduce Layering & Stratification</li>
-                            <li>Carve Sub-Volumes</li>
-                            <li>Aggregate as Clustered Parts</li>
-                            <li>Define the Boundary Condition</li>
-                            <li>Develop Spliced or Interlocked Joints</li>
-                            <li>Incorporate Pleating</li>
-                            <li>Differentiate the Intensity</li>
-                            <li>Create a Nested Loop</li>
-                        </ul>
-                    </details>
+
+                <!-- Phase 5 -->
+                <div class="bg-card p-6 md:p-7">
+                    <div class="flex items-start gap-5">
+                        <span class="font-display font-extrabold text-4xl text-accent leading-none">5</span>
+                        <div class="flex-1">
+                            <h3 class="font-display text-xl font-bold text-ink mb-2">Visualize &amp; Present</h3>
+                            <p class="text-graphite leading-relaxed">
+                                Document the whole journey and present it. High quality renderings from
+                                <strong class="text-ink">D5, Twinmotion, Rhino Render, or Midjourney</strong>, diagrams that
+                                explain your geometry's properties, and a clear account of the architectural implications.
+                                Your prompt log and your tool are part of the submission, not an appendix to it.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-sky-500">
-                    <h3 class="text-2xl font-bold text-slate-800 mb-3">4. Visualization & Presentation</h3>
-                    <p class="text-slate-600">Document your entire design process and present high-quality visualizations. This includes rendered images from tools like <strong>D5, Twinmotion, Rhino Render, or Midjourney</strong>, diagrams illustrating geometric properties, and a discussion of architectural implications.</p>
-                </div>
+
             </div>
         </section>
 
-        <section id="schedule" class="mb-12">
-            <h2 class="text-3xl font-bold tracking-tight text-slate-900 mb-4 border-b pb-2 border-slate-200">Detailed Weekly Schedule</h2>
-            <div class="space-y-4" id="schedule-accordion">
-                <div class="accordion-item bg-white rounded-lg shadow-sm">
-                    <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-slate-800 hover:bg-slate-50 rounded-t-lg transition-colors focus:outline-none">
-                        <span>Weeks 1-8: From Physical Models to Midterm</span>
-                        <svg class="chevron w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="accordion-content p-5 border-t border-slate-200 text-slate-600 space-y-3">
-                        <p><strong>Week 1 (Jan 20 - Tuesday): First Day of Classes.</strong> Exceptionally on Tuesday. Introduction to "Hacking Geometry". Students are assigned their individual semester-long Concepts and initial group tasks.</p>
-                        <p><strong>Week 2 (Jan 26): Physical Experiments Workshop.</strong> A hands-on session for groups to begin physical form-finding experiments related to the core techniques.</p>
-                        <p><strong>Week 3 (Feb 02): Concept & Taxonomy.</strong> Students present initial research on their concept's history and geometric principles.</p>
-                        <p><strong>Week 4 (Feb 09): Digital Translation & Good Topology.</strong> A workshop on translating physical forms to digital, with a key session on what makes a "good" and "clean" mesh topology for modeling.</p>
-                        <p><strong>Week 5 (Feb 16): Surface Analysis & Rationalization.</strong> A lecture on understanding surface quality through synclastic (positive) and anticlastic (negative) curvature. We'll use Rhino's Curvature Graph tool for analysis and discuss the concept of rationalization for fabrication.</p>
-                        <p><strong>Week 6 (Feb 23): Parametric Systems & Desk Crits.</strong> Introduction to parametric design to encode the discovered rules for systematic evolution. We will also have desk crits to review progress on digital models.</p>
-                        <p><strong>Week 7 (Mar 02): Parametric Development.</strong> In-class studio session to develop parametric "design rules" with instructor support.</p>
-                        <p class="font-semibold text-sky-600"><strong>Week 8 (Mar 09): MIDTERM PRESENTATIONS.</strong> Students present their full process: Concept, Experiments, and the resulting digital 3D Models.</p>
-                        <p class="bg-slate-100 p-2 text-center text-slate-500 rounded"><strong>Week 9 (Mar 16): NO CLASS &mdash; Spring Break.</strong></p>
-                    </div>
+        <!-- SCHEDULE -->
+        <section id="schedule" class="mb-12 scroll-mt-20">
+            <p class="eyebrow text-accent mb-2">05</p>
+            <h2 class="font-display text-3xl font-extrabold tracking-tight text-ink mb-3 pb-3 border-b-2 border-ink">Weekly Schedule</h2>
+            <p class="text-graphite mb-8 max-w-3xl leading-relaxed">
+                Wednesdays, August 26 to December 2, 2026. Eleven live sessions plus two peer-led studio weeks.
+                Two Wednesdays fall on BAC closures, so read the calendar carefully and note the gaps in November.
+            </p>
+
+            <!-- PART 1 -->
+            <div class="mb-10">
+                <div class="flex items-center gap-4 mb-4">
+                    <h3 class="font-display font-extrabold text-sm uppercase tracking-widest text-ink">Part 1 &middot; Discover</h3>
+                    <div class="flex-1 h-px bg-rule"></div>
+                    <span class="text-xs text-mist font-medium">Aug 26 to Sep 30</span>
                 </div>
-                <div class="accordion-item bg-white rounded-lg shadow-sm">
-                    <button class="accordion-header w-full flex justify-between items-center p-5 text-left font-semibold text-slate-800 hover:bg-slate-50 rounded-t-lg transition-colors focus:outline-none">
-                        <span>Weeks 10-16: Advanced Design & Final Presentation</span>
-                         <svg class="chevron w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                    </button>
-                    <div class="accordion-content p-5 border-t border-slate-200 text-slate-600 space-y-3">
-                        <p><strong>Week 10 (Mar 23): Advanced Operations Lecture.</strong> Students are assigned their final "Exploration Type" to apply to their digital system.</p>
-                        <p><strong>Week 11 (Mar 30): Digital Evolution Desk Crits.</strong> Desk crits focused on the spatial and architectural qualities of the newly evolved digital forms.</p>
-                        <p><strong>Week 12 (Apr 06): Visualization Workshop.</strong> Introduction to advanced rendering techniques in <strong>D5, Twinmotion, Rhino Render, and Midjourney</strong>.</p>
-                        <p><strong>Week 13 (Apr 13): Final Production Workshop.</strong> In-class session to produce final materials.</p>
-                        <p><strong>Week 14 (Apr 20): Desk Crits & Refinement.</strong> Final push for production.</p>
-                        <p><strong>Week 15 (Apr 27): Final Dry Run.</strong> Presentation rehearsal.</p>
-                        <p class="font-semibold text-sky-600"><strong>Week 16 (May 04): FINAL PRESENTATIONS.</strong> Students will present their fully evolved final designs, from concept to visualization.</p>
-                        <p><strong>Last Day (May 11): Wrap Up.</strong> Final submission and course wrap-up.</p>
+                <div class="space-y-px bg-rule border border-rule">
+
+                    <div class="bg-card p-5 flex flex-col sm:flex-row gap-4">
+                        <div class="sm:w-28 shrink-0">
+                            <p class="font-display font-extrabold text-ink">Aug 26</p>
+                            <p class="eyebrow text-mist">Session 1</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-display font-bold text-ink mb-1">Launch</h4>
+                            <p class="text-sm text-graphite leading-relaxed">
+                                Introduction to Hacking Geometry. Concepts and group tasks assigned, crit buddies paired.
+                                We finish with a live build: a working parametric script written from scratch in front of you,
+                                bugs included. Everyone leaves having run one.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-card hatch p-5 flex flex-col sm:flex-row gap-4">
+                        <div class="sm:w-28 shrink-0">
+                            <p class="font-display font-extrabold text-ink">Sep 2</p>
+                            <p class="eyebrow text-accent">Peer-led</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-display font-bold text-ink mb-1">Physical Experiments Workshop <span class="text-mist font-normal text-sm">(no live session)</span></h4>
+                            <p class="text-sm text-graphite leading-relaxed">
+                                Groups run this one themselves. Fold, dip, and carve your way into your geometry.
+                                You do not need an instructor watching you make things, you need time and materials.
+                                <strong class="text-ink">Due Sunday Sep 6:</strong> photos of at least three experiments,
+                                plus your rule card written in plain English.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-card p-5 flex flex-col sm:flex-row gap-4">
+                        <div class="sm:w-28 shrink-0">
+                            <p class="font-display font-extrabold text-ink">Sep 9</p>
+                            <p class="eyebrow text-mist">Session 2</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-display font-bold text-ink mb-1">Concept &amp; Taxonomy</h4>
+                            <p class="text-sm text-graphite leading-relaxed">
+                                Experiment debrief, then research presentations on your concept's history and geometric
+                                principles. Almanac pages assigned. Every presentation ends with your parameter list.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-card p-5 flex flex-col sm:flex-row gap-4">
+                        <div class="sm:w-28 shrink-0">
+                            <p class="font-display font-extrabold text-ink">Sep 16</p>
+                            <p class="eyebrow text-mist">Session 3</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-display font-bold text-ink mb-1">Digital Translation &amp; Good Topology</h4>
+                            <p class="text-sm text-graphite leading-relaxed">
+                                Moving from physical to digital, with a hard look at what makes a mesh clean and why bad
+                                topology will haunt you for the rest of the semester. First scripting lab in the second half.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-card p-5 flex flex-col sm:flex-row gap-4">
+                        <div class="sm:w-28 shrink-0">
+                            <p class="font-display font-extrabold text-ink">Sep 23</p>
+                            <p class="eyebrow text-mist">Session 4</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-display font-bold text-ink mb-1">Surface Analysis &amp; Rationalization</h4>
+                            <p class="text-sm text-graphite leading-relaxed">
+                                Reading surface quality through curvature: synclastic and anticlastic, and why the difference
+                                decides how a thing gets built. Rhino's Curvature Graph, and an introduction to rationalization
+                                for fabrication. Almanac pages due.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-card p-5 flex flex-col sm:flex-row gap-4">
+                        <div class="sm:w-28 shrink-0">
+                            <p class="font-display font-extrabold text-ink">Sep 30</p>
+                            <p class="eyebrow text-mist">Session 5</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-display font-bold text-ink mb-1">Build Your Own Tool</h4>
+                            <p class="text-sm text-graphite leading-relaxed">
+                                From one instance to a whole family. We take your single working script and give it dials.
+                                Second half is an open debugging clinic: bring what is broken.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- MIDTERM -->
+            <div class="mb-10">
+                <div class="bg-accent text-white p-6 md:p-7 border border-accent">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <div class="sm:w-28 shrink-0">
+                            <p class="font-display font-extrabold text-white text-lg">Oct 7</p>
+                            <p class="eyebrow text-white/70">Session 6</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-display font-extrabold text-xl text-white mb-2">Midterm Review</h4>
+                            <p class="text-sm text-white/90 leading-relaxed mb-3">
+                                Present your concept, your experiments, and your digital models. Then the part that matters:
+                                <strong class="text-white">demo your tool live, and let a classmate work the dials.</strong>
+                                You cannot fake a working tool, which is exactly why we do it this way.
+                            </p>
+                            <p class="text-sm text-white/75 leading-relaxed">
+                                Submit: rule card, Almanac page, models, working tool, prompt log.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- PART 2 -->
+            <div class="mb-10">
+                <div class="flex items-center gap-4 mb-4">
+                    <h3 class="font-display font-extrabold text-sm uppercase tracking-widest text-ink">Part 2 &middot; Evolve</h3>
+                    <div class="flex-1 h-px bg-rule"></div>
+                    <span class="text-xs text-mist font-medium">Oct 14 to Nov 4</span>
+                </div>
+                <div class="space-y-px bg-rule border border-rule">
+
+                    <div class="bg-card p-5 flex flex-col sm:flex-row gap-4">
+                        <div class="sm:w-28 shrink-0">
+                            <p class="font-display font-extrabold text-ink">Oct 14</p>
+                            <p class="eyebrow text-mist">Session 7</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-display font-bold text-ink mb-1">Advanced Operations</h4>
+                            <p class="text-sm text-graphite leading-relaxed">
+                                Exploration Types assigned. How to add a second operation to an existing tool without
+                                breaking the first one. We also set up next week's swap and pair everyone off.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-card hatch p-5 flex flex-col sm:flex-row gap-4">
+                        <div class="sm:w-28 shrink-0">
+                            <p class="font-display font-extrabold text-ink">Oct 21</p>
+                            <p class="eyebrow text-accent">Peer-led</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-display font-bold text-ink mb-1">Tool Swap <span class="text-mist font-normal text-sm">(no live session)</span></h4>
+                            <p class="text-sm text-graphite leading-relaxed">
+                                The best week of the semester, and it runs entirely without an instructor. You hand your
+                                tool to a classmate and they run it on <em>their</em> geometry, while you do the same with theirs.
+                                Writing something another person can actually use is a design problem you will never meet
+                                working alone.
+                                <strong class="text-ink">Due Sunday Oct 25:</strong> one image made with your partner's tool,
+                                and honest notes on where it fought you.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-card p-5 flex flex-col sm:flex-row gap-4">
+                        <div class="sm:w-28 shrink-0">
+                            <p class="font-display font-extrabold text-ink">Oct 28</p>
+                            <p class="eyebrow text-mist">Session 8</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-display font-bold text-ink mb-1">Swap Debrief &amp; Tool Refinement</h4>
+                            <p class="text-sm text-graphite leading-relaxed">
+                                What broke when someone else drove? We fix it, and fold the Exploration Type into your tool.
+                                Optional from here: add an interactive demo to your Almanac page.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-card p-5 flex flex-col sm:flex-row gap-4">
+                        <div class="sm:w-28 shrink-0">
+                            <p class="font-display font-extrabold text-ink">Nov 4</p>
+                            <p class="eyebrow text-mist">Session 9</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-display font-bold text-ink mb-1">Desk Crits</h4>
+                            <p class="text-sm text-graphite leading-relaxed">
+                                Individual reviews focused on the spatial and architectural qualities of your evolved form.
+                            </p>
+                            <p class="text-xs text-accent font-medium mt-2">
+                                Course withdrawal deadline is Friday Nov 6. If you have concerns about your standing, raise them today.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- PART 3 -->
+            <div class="mb-10">
+                <div class="flex items-center gap-4 mb-4">
+                    <h3 class="font-display font-extrabold text-sm uppercase tracking-widest text-ink">Part 3 &middot; Deliver</h3>
+                    <div class="flex-1 h-px bg-rule"></div>
+                    <span class="text-xs text-mist font-medium">Nov 11 to Dec 2</span>
+                </div>
+
+                <div class="bg-paper border-2 border-dashed border-rule p-4 mb-px text-center">
+                    <p class="eyebrow text-mist mb-1">Wed Nov 11 &middot; BAC Closed</p>
+                    <p class="text-sm text-graphite">Veterans Day. No class, nothing due.</p>
+                </div>
+
+                <div class="space-y-px bg-rule border border-rule">
+                    <div class="bg-card p-5 flex flex-col sm:flex-row gap-4">
+                        <div class="sm:w-28 shrink-0">
+                            <p class="font-display font-extrabold text-ink">Nov 18</p>
+                            <p class="eyebrow text-mist">Session 10</p>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-display font-bold text-ink mb-1">Visualization Workshop</h4>
+                            <p class="text-sm text-graphite leading-relaxed">
+                                Rendering in D5, Twinmotion, Rhino Render, and Midjourney, plus scripting your way out of
+                                repetitive output work. Almanac peer reviews exchanged. This is the last live session before
+                                the final, so bring real questions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-paper border-2 border-dashed border-rule p-4 my-px text-center">
+                    <p class="eyebrow text-mist mb-1">Wed Nov 25 &middot; BAC Closed</p>
+                    <p class="text-sm text-graphite">Thanksgiving break. No class, nothing due. Go and have a holiday.</p>
+                </div>
+
+                <div class="bg-ink text-paper p-5 flex flex-col sm:flex-row gap-4 border border-ink">
+                    <div class="sm:w-28 shrink-0">
+                        <p class="font-display font-extrabold text-white">Nov 29</p>
+                        <p class="eyebrow text-accent">Checkpoint</p>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-display font-bold text-white mb-1">Draft Boards Due, Sunday 9pm</h4>
+                        <p class="text-sm text-paper/75 leading-relaxed">
+                            Post your draft final boards. Your response partner replies by Tuesday Dec 1. With two closures
+                            in a row, this is the only thing standing between you and a very lonely final review.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FINAL -->
+            <div class="bg-accent text-white p-6 md:p-7 border border-accent">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="sm:w-28 shrink-0">
+                        <p class="font-display font-extrabold text-white text-lg">Dec 2</p>
+                        <p class="eyebrow text-white/70">Session 11</p>
+                    </div>
+                    <div class="flex-1">
+                        <h4 class="font-display font-extrabold text-xl text-white mb-2">Final Review</h4>
+                        <p class="text-sm text-white/90 leading-relaxed mb-3">
+                            Present the full arc: concept, physical experiments, the tool you built, the evolved design,
+                            and your final visualizations. We close by voting on the semester's best beautiful failure.
+                        </p>
+                        <p class="text-sm text-white/75 leading-relaxed">
+                            Submit: complete portfolio, final tool, Almanac page, prompt log.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
+        </div>
     </main>
 
-    <footer class="bg-white border-t border-slate-200 mt-12">
-        <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
-            <p>Hacking Geometry &mdash; Spring 2026</p>
+    <footer class="bg-ink text-paper/60 border-t border-rule mt-8">
+        <div class="max-w-5xl mx-auto py-8 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between gap-3 text-sm">
+            <p class="font-display font-bold text-white tracking-tight">HACKING GEOMETRY</p>
+            <p>Boston Architectural College &middot; Fall 2026 &middot; Wednesdays</p>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const accordionHeaders = document.querySelectorAll('.accordion-header');
-
-            accordionHeaders.forEach(header => {
-                header.addEventListener('click', (event) => {
-                    const item = header.parentElement;
-                    const content = item.querySelector('.accordion-content');
-                    const isOpen = item.classList.contains('accordion-open');
-                    
-                    // Close others
-                    document.querySelectorAll('.accordion-item').forEach(otherItem => {
-                        if (otherItem !== item) {
-                            otherItem.classList.remove('accordion-open');
-                            otherItem.querySelector('.accordion-content').style.maxHeight = null;
-                        }
-                    });
-
-                    // Toggle current
-                    if (isOpen) {
-                        item.classList.remove('accordion-open');
-                        content.style.maxHeight = null;
-                    } else {
-                        item.classList.add('accordion-open');
-                        content.style.maxHeight = content.scrollHeight + "px";
-                    }
-                });
-            });
-        });
-    </script>
 
 </body>
 </html>
